@@ -1,0 +1,79 @@
+{
+  "strategy": "localized",
+  "frame": {
+    "reference": "chassis",
+    "u": [
+      0,
+      1,
+      0
+    ],
+    "v": [
+      0,
+      0,
+      1
+    ],
+    "n": [
+      1,
+      0,
+      0
+    ]
+  },
+  "tools": [
+    {
+      "name": "open",
+      "contact_reference": "designated physical fingertip",
+      "calibration_version": "replace-with-local-calibration-revision",
+      "local_contact_uv": null,
+      "visibility_note": "Open fingers expose the panel near the merged contact pixel."
+    },
+    {
+      "name": "closed",
+      "contact_reference": "merged gripper end",
+      "calibration_version": "replace-with-local-calibration-revision",
+      "local_contact_uv": null,
+      "visibility_note": "The merged end can occlude the target; use global view to check contact path."
+    }
+  ],
+  "gripper_keys": {
+    "open": "o",
+    "closed": "c"
+  },
+  "depth_point": null,
+  "min_depth_pixels": 5,
+  "press": {
+    "open_tool": "open",
+    "press_tool": "closed",
+    "contact_depth_m": null,
+    "max_travel_m": 0.085,
+    "standoff_m": 0.01,
+    "overpress_m": 0.0,
+    "withdraw_m": 0.01,
+    "max_attempts": 3,
+    "range_min_m": 0.001,
+    "range_max_m": 1.0,
+    "require_path_review": true
+  },
+  "camera_topics": {
+    "head": "/astribot_camera/head_rgbd/color_compress/compressed",
+    "right": "/astribot_camera/right_wrist_rgbd/color_compress/compressed",
+    "depth": "/astribot_camera/right_wrist_rgbd/depth_compress"
+  },
+  "camera_headers": "/opt/astribot_ros/software/astribot_camera_sdk/include/realsense/include",
+  "alignment_guidance": "Fill only after checking this camera mounting: how local target displacement relative to the calibrated contact point maps to u/v. Unknown image-to-motion mapping must be reviewed; no pixel-to-metre conversion is supplied.",
+  "perception": {
+    "refine_local": true,
+    "refinement_scale": 3.0,
+    "crop_side_px": 768,
+    "press_zoom": true,
+    "press_zoom_scale": 6.0,
+    "max_view_angle_delta_rad": 0.017453292519943295,
+    "direct_press": true,
+    "press_tool": "closed",
+    "repeat_count": 3,
+    "attempt_memory_limit": 3,
+    "local_axis_signs": [
+      1,
+      1
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+# Source in an already activated Python environment with numpy and OpenCV.
+# Provide S1_SDK_ROOT explicitly; no personal home paths are assumed.
+: "${S1_SDK_ROOT:?Set S1_SDK_ROOT to your installed Astribot SDK directory}"
+S1_ROS_ROOT="${S1_ROS_ROOT:-/opt/astribot_ros}"
+source "${S1_ROS_SETUP:-/opt/ros/humble/setup.bash}"
+source "$S1_ROS_ROOT/middle_ware/local_setup.bash"
+source "$S1_ROS_ROOT/software/local_setup.bash"
+source "$S1_ROS_ROOT/third_pkg/local_setup.bash"
+source "$S1_ROS_ROOT/robot_system_ctrl/ros_env.sh"
+export ASTRIBOT_ROS_INSTALL_PATH="$S1_ROS_ROOT/software"
+export ASTRIBOT_CAMERA_INSTALL_PATH="$S1_ROS_ROOT/software"
+export ASTRIBOT_CAMERA_INFO_PATH="${ASTRIBOT_CAMERA_INFO_PATH:-/etc/config/camera_info.json}"
+export ASTRIBOT_SDK_ROOT="$S1_SDK_ROOT" ROBOT_TYPE="${ROBOT_TYPE:-S1}"
+export PYTHONPATH="$S1_SDK_ROOT:$S1_SDK_ROOT/third_party/astribot_ros_middleware_py:${PYTHONPATH:-}"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:-}:$S1_SDK_ROOT/astribot_sdk/core/common/robotics_library_py:$S1_SDK_ROOT/astribot_sdk/core/common/whole_body_control/third_party:$S1_SDK_ROOT/third_party/drake/lib:$S1_SDK_ROOT/third_party/third_pkg"
