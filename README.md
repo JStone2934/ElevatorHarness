@@ -8,6 +8,9 @@ Tool configurations, including gripper opening and closing, change both contact 
 
 Elevator button pressing is the first task. Navigation, riding an elevator, high-frequency VLA control, and arbitrary manipulation are outside this release.
 
+<img width="1196" height="699" alt="image" src="https://github.com/user-attachments/assets/ca22685d-0aeb-419d-a0de-271d8401b0d5" />
+
+
 ## Quick start
 
 Python 3.10 or later. The core has no third-party runtime dependencies and imports no robot SDK.
